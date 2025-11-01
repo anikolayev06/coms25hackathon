@@ -4,8 +4,6 @@ from . import conversation
 from pathlib import Path
 import os
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY_COMS25")
-
 INTERVIEWER_ROLE, ASK_INTERVIEW_QUESTIONS, JOB_DESCRIPTION_CONTEXT, RESUME_CONTEXT, FEEDBACK_REQUEST = system_prompts.load_prompts()
 
 chat = conversation.Conversation()
@@ -83,7 +81,7 @@ def get_interview_feedback() -> Optional[str]:
         The feedback text if available, or None if not.
     """
 
-    pass
+    return prompt_gemini(FEEDBACK_REQUEST)
 
 def start_voice_recording() -> bool:
     """

@@ -4,13 +4,14 @@ from google import genai
 from typing import Optional
 from google import genai
 from pathlib import Path
-import sys
+import os
 
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY_COMS25")
 GEMINI_MODEL = "gemini-2.5-flash"
 
 class Conversation:
     def __init__(self):
-        self.client = genai.Client()
+        self.client = genai.Client(api_key=GEMINI_API_KEY)
         self.chat = self.client.chats.create(model=GEMINI_MODEL)
 
     def prompt_gemini(self, input: str) -> Optional[str]:
