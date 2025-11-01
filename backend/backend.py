@@ -21,7 +21,7 @@ def prompt_gemini(input: str) -> Optional[str]:
         The text response from Gemini on success, or None on failure.
     """
 
-    pass
+    return conversation.prompt_gemini(input)
 
 def submit_resume_pdf(pdf_path: Path) -> bool:
     """
