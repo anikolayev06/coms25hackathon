@@ -113,7 +113,7 @@ def start_voice_recording() -> bool:
         True if the recording started successfully, False otherwise.
     """
 
-    pass
+    
 
 def stop_voice_recording() -> Optional[Path]:
     """
@@ -141,9 +141,6 @@ def transcribe_audio(audio_path: Path) -> Optional[str]:
     Optional[str]
         The transcribed text if successful, or None on failure.
     """
-
-    if not isinstance(audio_path, Path):
-        audio_path = Path(audio_path)
 
     if not audio_path.exists() or not audio_path.is_file():
         return None
