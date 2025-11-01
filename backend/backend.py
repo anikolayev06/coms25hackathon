@@ -1,14 +1,9 @@
-from . import system_prompts
-from typing import Optional
-from . import conversation
 from pathlib import Path
-import os
+from typing import Optional
+from google import genai
+from google.genai import types
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY_COMS25")
-
-INTERVIEWER_ROLE, ASK_INTERVIEW_QUESTIONS, JOB_DESCRIPTION_CONTEXT, RESUME_CONTEXT, FEEDBACK_REQUEST = system_prompts.load_prompts()
-
-chat = conversation.Conversation()
+GEMINI_MODEL = "gemini-2.5-flash"
 
 def prompt_gemini(input: str) -> Optional[str]:
     """
@@ -25,7 +20,7 @@ def prompt_gemini(input: str) -> Optional[str]:
         The text response from Gemini on success, or None on failure.
     """
 
-    return chat.prompt_gemini(input)
+    pass
 
 def submit_resume_pdf(pdf_path: Path) -> bool:
     """
@@ -125,9 +120,3 @@ def transcribe_audio(audio_path: Path) -> Optional[str]:
     """
 
     pass
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()
