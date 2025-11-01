@@ -59,7 +59,8 @@ def submit_job_description(input: str) -> bool:
         True if the submission was successful, False otherwise.
     """
 
-    pass
+    response = chat.prompt_gemini(f"{JOB_DESCRIPTION_CONTEXT}\n\nJob Description:\n{input}")
+    return bool(response)
 
 def ask_interview_question() -> Optional[str]:
     """
