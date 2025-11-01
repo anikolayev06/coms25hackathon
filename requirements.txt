@@ -17,6 +17,7 @@ PyQt6==6.10.0
 PyQt6-Qt6==6.10.0
 PyQt6_sip==13.10.2
 python-dotenv==1.2.1
+PyYAML==6.0.3
 requests==2.32.5
 rsa==4.9.1
 setuptools==80.9.0

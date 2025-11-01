@@ -1,5 +1,6 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
+from backend.backend import prompt_gemini
 
 class InterviewPage(QWidget):
     def __init__(self, parent=None):
@@ -11,7 +12,7 @@ class InterviewPage(QWidget):
 
         layout = QVBoxLayout()
 
-        self.question_label = QLabel("AI will generate your first interview question here.")
+        self.question_label = QLabel("Waiting for AI to generate your question...")
         self.question_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.question_label.setWordWrap(True)
         layout.addWidget(self.question_label)
