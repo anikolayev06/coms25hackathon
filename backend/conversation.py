@@ -1,4 +1,6 @@
 from google.genai.types import GenerateContentResponse
+from google.genai import types
+from google import genai
 from typing import Optional
 from google import genai
 from pathlib import Path
@@ -52,4 +54,23 @@ class Conversation:
             True if the submission was successful, False otherwise.
         """
 
-        pass
+        filepath = Path(pdf_path)
+
+        if not pdf_path.exists() or not pdf_path.is_file():
+            return False
+    
+        if pdf_path.suffix.lower() != ".pdf":
+            return False
+
+        response = self.client.models.generate_content(
+             model=GEMINI_MODEL,
+             contents=[
+                 types.Part.from_bytes(
+                     data=pdf_path.read_bytes(),
+                     mime_type="application/pdf",
+                ),
+                 prompt
+            ],
+        )
+        
+        return bool(getattr(response, "text", None))
