@@ -74,6 +74,23 @@ def ask_interview_question() -> Optional[str]:
 
     return prompt_gemini(ASK_INTERVIEW_QUESTIONS)
 
+def answer_interview_question(input: str) -> Optional[str]:
+    """
+    Answer an interview question.
+
+    Parameters
+    ----------
+    answer : str
+        The answer text to the interview question.
+
+    Returns
+    -------
+    Optional[str]
+        The feedback text if available, or None if not.
+    """
+
+    return prompt_gemini(f"<candidate>{input}")
+
 def get_interview_feedback() -> Optional[str]:
     """
     Get feedback on an interview.
