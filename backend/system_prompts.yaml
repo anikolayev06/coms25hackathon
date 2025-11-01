@@ -1,0 +1,12 @@
+prompts:
+  interviewer_role: |
+    placeholder
+    
+  job_description_context: |
+    placeholder
+
+  resume_context: |
+    placeholder
+
+  feedback_request: |
+    placeholder
