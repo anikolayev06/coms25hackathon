@@ -9,6 +9,7 @@ def load_prompts() -> Optional[tuple[str, str, str, str]]:
         yaml_dict: dict = yaml.safe_load(yamlFile)
         return (
             yaml_dict['prompts']["interviewer_role"],
+            yaml_dict['prompts']["ask_interview_questions"],
             yaml_dict['prompts']["job_description_context"],
             yaml_dict['prompts']["resume_context"],
             yaml_dict['prompts']["feedback_request"])

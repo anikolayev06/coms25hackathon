@@ -1,6 +1,9 @@
 prompts:
   interviewer_role: |
     placeholder
+
+  ask_interview_questions: |
+    placeholder
     
   job_description_context: |
     placeholder
