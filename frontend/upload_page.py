@@ -17,7 +17,7 @@ class UploadPage(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        self.setStyleSheet("background-color: #0f172a; color: #e2e8f0; font-family: 'Segoe UI';")
+        self.setStyleSheet("background-color: #0f172a; color: #e2e8f0; font-family: 'Segue UI';")
 
         main_layout = QVBoxLayout(self)
         main_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -43,11 +43,20 @@ class UploadPage(QWidget):
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         title = QLabel("PrepTalk")
-        title.setFont(QFont("Segoe UI", 28, QFont.Weight.Bold))
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        title.setStyleSheet("""
+            QLabel {
+                color: interlinear(x1:0, y1:0, x2:1, y2:0,
+                                       stop:0 #60a5fa, stop:1 #a78bfa);
+                font-family: 'Poppins', 'Segue UI', sans-serif;
+                font-weight: 800;
+                font-size: 30px;
+                letter-spacing: 2px;
+            }
+        """)
 
         subtitle = QLabel("Upload your resume and paste the job description below.")
-        subtitle.setFont(QFont("Segoe UI", 12))
+        subtitle.setFont(QFont("Segue UI", 12))
         subtitle.setStyleSheet("color: #94a3b8;")
         subtitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -72,8 +81,8 @@ class UploadPage(QWidget):
         self.resume_label.setStyleSheet("color: #94a3b8;")
 
         job_label = QLabel("Job Description")
-        job_label.setFont(QFont("Segoe UI", 14))
-        job_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        job_label.setFont(QFont("Segue UI", 14))
+        job_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.job_input = QTextEdit()
         self.job_input.setPlaceholderText("Paste the job description here")
