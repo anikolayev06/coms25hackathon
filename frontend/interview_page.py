@@ -16,7 +16,7 @@ class InterviewPage(QWidget):
 
         layout = QVBoxLayout()
 
-        self.question_label = QLabel("Waiting for AI to generate your question...")
+        self.question_label = QLabel("Waiting for AI to generate your question")
         self.question_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.question_label.setWordWrap(True)
         layout.addWidget(self.question_label)
@@ -43,9 +43,11 @@ class InterviewPage(QWidget):
     def toggle_recording(self):
         if not self.recording:
             self.record_button.setText("Stop Recording")
-            print("Recording started...")
+            backend.stop_voice_recording()
+            print("Recording started.")
         else:
             self.record_button.setText("Start Recording")
+            backend.start_voice_recording()
             print("Recording stopped.")
         self.recording = not self.recording
 
@@ -55,7 +57,7 @@ class InterviewPage(QWidget):
             self.update_question_display()
         else:
             self.next_button.hide()
-            self.question_label.setText("Interview complete! Great job!")
+            self.question_label.setText(backend.get_interview_feedback())
 
     def update_question_display(self):
         question = self.questions[self.current_question_index]

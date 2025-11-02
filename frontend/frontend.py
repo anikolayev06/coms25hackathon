@@ -5,7 +5,7 @@ from frontend.interview_page import InterviewPage
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Interview Simulator")
+        self.setWindowTitle("PrepTalk")
         self.setGeometry(100, 100, 600, 400)
 
         self.stack = QStackedWidget()

@@ -1,7 +1,8 @@
 import sys
 from PyQt6.QtWidgets import QApplication
+from cryptography.hazmat.backends.openssl import backend
 
-from backend.backend import initialize
+from backend.backend import initialize, deinitialize
 from frontend.frontend import MainWindow
 
 def main():
@@ -48,6 +49,7 @@ def main():
 
     window = MainWindow()
     window.show()
+    initialize()
     sys.exit(app.exec())
 
 if __name__ == "__main__":

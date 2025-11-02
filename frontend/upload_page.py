@@ -42,7 +42,7 @@ class UploadPage(QWidget):
         layout.setSpacing(15)
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        title = QLabel("AI Interview Simulator")
+        title = QLabel("PrepTalk")
         title.setFont(QFont("Segoe UI", 28, QFont.Weight.Bold))
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -76,7 +76,7 @@ class UploadPage(QWidget):
         job_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
 
         self.job_input = QTextEdit()
-        self.job_input.setPlaceholderText("Paste the job description here...")
+        self.job_input.setPlaceholderText("Paste the job description here")
         self.job_input.setStyleSheet("""
             QTextEdit {
                 background-color: #0f172a;
@@ -131,11 +131,11 @@ class UploadPage(QWidget):
         job_text = self.job_input.toPlainText()
 
         if not self.resume_path:
-            self.resume_label.setText("Please upload a resume before starting.")
+            self.resume_label.setText("Upload a resume before starting.")
             return
 
         if not job_text.strip():
-            self.resume_label.setText("Please paste a job description before starting.")
+            self.resume_label.setText("Paste a job description before starting.")
             return
 
         backend.submit_resume_pdf(Path(self.resume_path))
