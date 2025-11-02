@@ -134,6 +134,8 @@ def stop_voice_recording() -> Optional[Path]:
         The path to the recorded audio file if available, or None if not.
     """
 
+    print(TMP_DIR.is_dir())
+    print(TMP_DIR.exists())
     output_path = TMP_DIR / "answer.wav"
     success = RECORDER.stop_recording(output_path)
     return output_path if success else None
@@ -168,35 +170,6 @@ def deinitialize():
         shutil.rmtree(TMP_DIR)
 
 def main():
-    # audio_path: Path = TMP_DIR / "test.wav"
-
-    # recstart_success: bool = RECORDER.start_recording()
-
-    # if recstart_success == False:
-    #     print("Error starting audio recording.")
-    #     return
-    
-    # print("Recording audio...")
-    
-    # import time
-    # time.sleep(5)  # Record for 5 seconds
-
-    # recording_success: bool = RECORDER.stop_recording(audio_path)
-
-    # if recording_success == False: 
-    #     print("Error generating audio file.")
-    #     return
-    
-    # print("Audio recording stopped.")
-
-    # transcript: Optional[str] = transcribe_audio(audio_path)
-
-    # if not transcript:
-    #     print("Error transcribing audio.")
-    #     return
-    
-    # print(f"Transcription: {transcript}")
-
     pass
 
 if __name__ == "__main__":

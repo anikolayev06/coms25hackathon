@@ -1,6 +1,5 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
-import backend
 from backend import backend
 from pathlib import Path
 
@@ -47,17 +46,21 @@ class InterviewPage(QWidget):
     def toggle_recording(self):
         if not self.recording:
             self.record_button.setText("Stop Recording")
-            backend.start_voice_recording()
-            print("Recording started.")
+            start_rec_success: bool = backend.start_voice_recording()
+
+            if not start_rec_success:
+                raise Exception("Failed to start recording.")
+            else:
+                print("Recording started.")
         else:
             self.record_button.setText("Start Recording")
             path = backend.stop_voice_recording()
-            if not path:
-                print("Error: No audio recorded.")
-                self.question_label.setText("Error: No audio recorded.")
-                return
 
-            print("Recording stopped.")
+            if path is None:
+                raise Exception("Failed to stop recording.")
+            else:
+                print("Recording stopped.")
+
             transcript = backend.transcribe_audio(path)
             print(f"Transcript: {transcript}")
 

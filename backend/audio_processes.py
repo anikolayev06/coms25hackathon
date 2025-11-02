@@ -149,7 +149,6 @@ class Recorder:
         """
 
         if not self.is_recording:
-            print("not recording")
             return False
             
         try:
@@ -159,14 +158,11 @@ class Recorder:
                 self.recordingThread.join(timeout=2.0)  # Add timeout
             
             if not self.audio_data:
-                print("No audio data captured.")
                 return False
                 
             audio_array = np.concatenate(self.audio_data, axis=0)
             sf.write(str(output_path), audio_array, self.sample_rate)
-            
-            duration = len(audio_array) / self.sample_rate
+        
             return True
         except Exception as e:
-            print(f"Error stopping recording: {e}")
             return False

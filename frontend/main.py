@@ -48,8 +48,8 @@ def main():
 
     window = MainWindow()
     window.show()
-    deinitialize()
     sys.exit(app.exec())
+    deinitialize()
 
 if __name__ == "__main__":
     main()
