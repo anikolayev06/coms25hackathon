@@ -109,7 +109,7 @@ class InterviewPage(QWidget):
             self.record_button.setText("Start Recording")
             path = backend.stop_voice_recording()
             transcrition: str = backend.transcribe_audio(path)
-            backend.ask_interview_question(transcrition)
+            backend.answer_interview_question(transcrition)
 
             if path is None:
                 raise Exception("Failed to stop recording.")
