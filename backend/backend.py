@@ -134,8 +134,6 @@ def stop_voice_recording() -> Optional[Path]:
         The path to the recorded audio file if available, or None if not.
     """
 
-    print(TMP_DIR.is_dir())
-    print(TMP_DIR.exists())
     output_path = TMP_DIR / "answer.wav"
     success = RECORDER.stop_recording(output_path)
     return output_path if success else None
